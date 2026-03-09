@@ -7,11 +7,15 @@ import { InputEventMy } from './util/types.ts'
 
 function App() {
   const [inputValues, setInputValues] = useState<Record<keyof InvestmentInput, string>>({
-    initialInvestment: '',
-    annualInvestment: '',
-    expectedReturn: '',
-    duration: '',
+    initialInvestment: '10000',
+    annualInvestment: '1000',
+    expectedReturn: '6',
+    duration: '10',
   })
+
+  const isInputValid = Object.values(inputValues).every(
+    value => value.trim() !== '' && !isNaN(Number(value)) && Number(value) >= 0
+  )
 
   const handleInputChange = (e: InputEventMy, inputName: keyof InvestmentInput) => {
     setInputValues(prevValues => ({
@@ -24,7 +28,10 @@ function App() {
     <>
       <Header />
       <Inputs inputValues={inputValues} handleInputChange={handleInputChange} />
-      <Table inputsValue={inputValues} />
+      {!isInputValid && (
+        <p className="text-red-500 text-center mt-4">Please enter valid numbers (greater than 0) for all fields.</p>
+      )}
+      {isInputValid && <Table inputsValue={inputValues} />}
     </>
   )
 }

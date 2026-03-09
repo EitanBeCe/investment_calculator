@@ -16,7 +16,7 @@ const inputs: { label: string; name: keyof InvestmentInput }[] = [
 
 const Inputs = ({ inputValues, handleInputChange }: InputsProps) => {
   return (
-    <div className="bg-purple-500 p-4 rounded-lg md:w-1/2 max-w-md mx-auto grid grid-cols-1 gap-3 md:grid-cols-2">
+    <section className="bg-purple-500 p-4 rounded-lg md:w-1/2 max-w-md mx-auto grid grid-cols-1 gap-3 md:grid-cols-2">
       {inputs.map(input => (
         <Input
           key={input.name}
@@ -25,7 +25,7 @@ const Inputs = ({ inputValues, handleInputChange }: InputsProps) => {
           onChange={e => handleInputChange(e, input.name)}
         />
       ))}
-    </div>
+    </section>
   )
 }
 

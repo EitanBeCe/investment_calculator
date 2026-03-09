@@ -72,7 +72,8 @@ body {
   margin: 2rem auto;
   padding: 1rem;
   table-layout: fixed;
-  border-spacing: 1rem;
+  border-collapse: separate;
+  border-spacing: 0.75rem 0;
   text-align: right;
 }
 

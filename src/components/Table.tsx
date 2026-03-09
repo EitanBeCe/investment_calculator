@@ -16,28 +16,32 @@ const Table = ({ inputsValue }: TableProps) => {
   const results = calculateInvestmentResults(inputsNumbers)
 
   return (
-    // <table className="w-full max-w-2xl mx-auto mt-6 bg-white rounded-lg shadow-md">
-    <table className="result md:w-1/2 max-w-md mx-auto mt-6">
+    <table id="result" className="mt-6 ">
       <thead>
         <tr>
-          <th className="py-2 px-4 border-b">Year</th>
-          <th className="py-2 px-4 border-b">Investment Value</th>
-          <th className="py-2 px-4 border-b">Interest(Year)</th>
-          <th className="py-2 px-4 border-b">Total Interest</th>
-          <th className="py-2 px-4 border-b">Invested Capital</th>
+          <th>Year</th>
+          <th>Investment Value</th>
+          <th>Interest(Year)</th>
+          <th>Total Interest</th>
+          <th>Invested Capital</th>
         </tr>
       </thead>
 
       <tbody>
-        {results.map(result => (
-          <tr key={result.year}>
-            <td className="py-2 px-4 border-b">{result.year}</td>
-            <td className="py-2 px-4 border-b">{formatter.format(result.annualInvestment)}</td>
-            <td className="py-2 px-4 border-b">{formatter.format(result.interest)}</td>
-            <td className="py-2 px-4 border-b">{formatter.format(1000)}</td>
-            <td className="py-2 px-4 border-b">{formatter.format(1000)}</td>
-          </tr>
-        ))}
+        {results.map(result => {
+          const totalInterest = result.valueEndOfYear - inputsNumbers.initialInvestment - result.annualInvestment * result.year
+          const totalAmountInvested = result.valueEndOfYear - totalInterest
+
+          return (
+            <tr key={result.year}>
+              <td>{result.year}</td>
+              <td>{formatter.format(result.valueEndOfYear)}</td>
+              <td>{formatter.format(result.interest)}</td>
+              <td>{formatter.format(totalInterest)}</td>
+              <td>{formatter.format(totalAmountInvested)}</td>
+            </tr>
+          )
+        })}
       </tbody>
     </table>
   )

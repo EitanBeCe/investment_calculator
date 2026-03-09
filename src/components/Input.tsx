@@ -16,6 +16,7 @@ const Input = ({ label, value, onChange }: InputProps) => {
       <input
         type="number"
         id="user-input"
+        required
         className="input input-bordered w-full max-w-xs"
         value={value}
         onChange={e => onChange(e)}
