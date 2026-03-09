@@ -1,8 +1,10 @@
+import { InputEventMy } from '../util/types.ts'
+
 interface InputProps {
-  label: string;
+  label: string
   //   name: keyof InvestmentInput;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string
+  onChange: (e: InputEventMy) => void
 }
 
 const Input = ({ label, value, onChange }: InputProps) => {
@@ -17,10 +19,10 @@ const Input = ({ label, value, onChange }: InputProps) => {
         id="user-input"
         className="input input-bordered w-full max-w-xs"
         value={value}
-        onChange={(e) => onChange(e)}
+        onChange={e => onChange(e)}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

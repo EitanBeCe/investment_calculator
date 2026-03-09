@@ -1,7 +1,11 @@
-import { useState } from 'react'
 import Input from './Input.tsx'
 import { InvestmentInput } from '../util/investment.ts'
 import { InputEventMy } from '../util/types.ts'
+
+interface InputsProps {
+  inputValues: Record<keyof InvestmentInput, string>
+  handleInputChange: (e: InputEventMy, inputName: keyof InvestmentInput) => void
+}
 
 const inputs: { label: string; name: keyof InvestmentInput }[] = [
   { label: 'Initial Investment', name: 'initialInvestment' },
@@ -10,21 +14,7 @@ const inputs: { label: string; name: keyof InvestmentInput }[] = [
   { label: 'Duration', name: 'duration' },
 ]
 
-const Inputs = () => {
-  const [inputValues, setInputValues] = useState<Record<keyof InvestmentInput, string>>({
-    initialInvestment: '',
-    annualInvestment: '',
-    expectedReturn: '',
-    duration: '',
-  })
-
-  const handleInputChange = (e: InputEventMy, inputName: keyof InvestmentInput) => {
-    setInputValues(prevValues => ({
-      ...prevValues,
-      [inputName]: e.target.value,
-    }))
-  }
-
+const Inputs = ({ inputValues, handleInputChange }: InputsProps) => {
   return (
     <div className="bg-purple-500 p-4 rounded-lg md:w-1/2 max-w-md mx-auto grid grid-cols-1 gap-3 md:grid-cols-2">
       {inputs.map(input => (
