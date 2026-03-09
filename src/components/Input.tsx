@@ -2,7 +2,6 @@ import { InputEventMy } from '../util/types.ts'
 
 interface InputProps {
   label: string
-  //   name: keyof InvestmentInput;
   value: string
   onChange: (e: InputEventMy) => void
 }

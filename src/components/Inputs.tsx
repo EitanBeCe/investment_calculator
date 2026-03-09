@@ -1,9 +1,9 @@
 import Input from './Input.tsx'
 import { InvestmentInput } from '../util/investment.ts'
-import { InputEventMy } from '../util/types.ts'
+import { InputEventMy, InputValues } from '../util/types.ts'
 
 interface InputsProps {
-  inputValues: Record<keyof InvestmentInput, string>
+  inputValues: InputValues
   handleInputChange: (e: InputEventMy, inputName: keyof InvestmentInput) => void
 }
 

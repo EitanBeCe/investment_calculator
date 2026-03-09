@@ -24,7 +24,7 @@ function App() {
     <>
       <Header />
       <Inputs inputValues={inputValues} handleInputChange={handleInputChange} />
-      <Table />
+      <Table inputsValue={inputValues} />
     </>
   )
 }
