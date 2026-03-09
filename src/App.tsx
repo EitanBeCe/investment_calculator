@@ -1,6 +1,8 @@
+import Header from "./components/Header.tsx"
+
 function App() {
   return (
-    <h1>React Investment Calculator</h1>
+    <Header />
   )
 }
 
